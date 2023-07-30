@@ -9,9 +9,24 @@ export default class Clinic extends Model {
 
 Clinic.init({
   // Model attributes are defined here
+  healthProviderName: {
+    type: DataTypes.STRING,
+  },
   address: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  city: {
+    type: DataTypes.STRING
+  },
+  postalCode: {
+    type: DataTypes.STRING
+  },
+  phoneNumber: {
+    type: DataTypes.STRING
+  },
+  website: {
+    type: DataTypes.STRING
   },
   doctors: {
     type: DataTypes.ARRAY(DataTypes.STRING)

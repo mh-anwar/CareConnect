@@ -20,9 +20,6 @@ const Patient = sequelize.define('Patient', {
     dateOfBirth: {
         type: DataTypes.DATEONLY
     },
-    location: {
-        type: DataTypes.STRING
-    },
     phoneNumber: {
         type: DataTypes.STRING
     },
@@ -30,7 +27,7 @@ const Patient = sequelize.define('Patient', {
         type: DataTypes.STRING
     },
     appointments: {
-        type: DataTypes.ARRAY(DataTypes.STRING)
+        type: DataTySpes.ARRAY(DataTypes.STRING)
     },
     prescriptions: {
         type: DataTypes.ARRAY(DataTypes.STRING)
