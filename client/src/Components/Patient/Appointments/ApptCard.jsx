@@ -13,6 +13,7 @@ import {
     ButtonGroup,
 } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
+import './Appointments.scss';
 
 export default function ApptCard({ appointment }) {
     const dayNames = [
@@ -48,15 +49,14 @@ export default function ApptCard({ appointment }) {
                             For {appointment.duration} minutes
                         </StatHelpText>
                     </Stat>
+                    <ButtonGroup isAttached className="vertical-btn-group">
+                        <Button>Modify</Button>
+                        <Button>Delete</Button>
+                        <Button>See Details</Button>
+                    </ButtonGroup>
                 </StatGroup>
             </CardBody>
-            <CardFooter>
-                <ButtonGroup isAttached>
-                    <Button>Modify</Button>
-                    <Button>Delete</Button>
-                    <Button>See Details</Button>
-                </ButtonGroup>
-            </CardFooter>
+            <CardFooter></CardFooter>
         </Card>
     );
 }
