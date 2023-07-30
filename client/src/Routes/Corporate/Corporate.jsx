@@ -1,11 +1,20 @@
-import Login from '../../components/Login/Login';
-import Navigation from './Navigation/Navigation';
+import Header from './Header/Header';
+import Navigation from '../../Components/Navigation/Navigation';
+import { useEffect, useState } from 'react';
 
 export default function Corporate() {
+    const [userLoggedIn, setUserLoggedIn] = useState(false);
+    const paths = {
+        Home: { path: '/' },
+        About: { path: '/about' },
+        Join: { path: '/join' },
+    };
+
+    useEffect(() => {});
     return (
         <div>
-            <Navigation />
-            <Login />
+            <Navigation paths={paths} />
+            <Header />
         </div>
     );
 }
