@@ -8,8 +8,11 @@ import {
     Container,
     Heading,
     Button,
+    Icon,
 } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
+import { MdPerson } from 'react-icons/md';
+import { FaClinicMedical } from 'react-icons/fa';
 import './Join.scss';
 
 export default function JoinRouter() {
@@ -40,13 +43,16 @@ export default function JoinRouter() {
                                 to="/join/patient"
                                 colorScheme="blue"
                             >
+                                <Icon as={MdPerson} />
                                 Patient
                             </Button>
+
                             <Button
                                 as={Link}
-                                to="/join/clinic"
+                                to="/join/hcp"
                                 colorScheme="purple"
                             >
+                                <Icon as={FaClinicMedical} />
                                 Clinic
                             </Button>
                         </CardBody>

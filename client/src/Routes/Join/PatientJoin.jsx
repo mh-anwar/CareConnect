@@ -7,7 +7,6 @@ import {
     InputGroup,
     InputRightAddon,
     Text,
-    Container,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -15,8 +14,8 @@ import './Join.scss';
 import { useAuth0 } from '@auth0/auth0-react';
 
 export default function PatientJoin() {
-    const { isLoading, isAuthenticated, error, user, loginWithRedirect } =
-        useAuth0();
+    const { isLoading, isAuthenticated, error, user } = useAuth0();
+
     // TODO Send this data to server on submit
     const [inputs, setInputs] = useState({
         firstName: user.given_name,
@@ -28,7 +27,7 @@ export default function PatientJoin() {
         },
         dob: '',
     });
-
+    // TODO add inputs: phone number, sex
     const changeValue = (event) => {
         const { name, value } = event.target;
         console.log(name, value);
@@ -37,27 +36,29 @@ export default function PatientJoin() {
     return (
         <Box className="join-page">
             <Text fontSize="3xl">Complete your signup</Text>
-            <Container className="form">
-                <FormControl>
-                    <FormLabel>First Name</FormLabel>
-                    <Input
-                        name="firstName"
-                        type="text"
-                        value={inputs.firstName}
-                        placeholder="John"
-                        onChange={changeValue}
-                    />
-                </FormControl>
-                <FormControl>
-                    <FormLabel>Last Name</FormLabel>
-                    <Input
-                        name="lastName"
-                        type="text"
-                        value={inputs.lastName}
-                        placeholder="Doe"
-                        onChange={changeValue}
-                    />
-                </FormControl>
+            <Box className="form">
+                <Box className="sub-form">
+                    <FormControl>
+                        <FormLabel>First Name</FormLabel>
+                        <Input
+                            name="firstName"
+                            type="text"
+                            value={inputs.firstName}
+                            placeholder="John"
+                            onChange={changeValue}
+                        />
+                    </FormControl>
+                    <FormControl>
+                        <FormLabel>Last Name</FormLabel>
+                        <Input
+                            name="lastName"
+                            type="text"
+                            value={inputs.lastName}
+                            placeholder="Doe"
+                            onChange={changeValue}
+                        />
+                    </FormControl>
+                </Box>
                 <FormControl>
                     <FormLabel>Email address</FormLabel>
                     <Input
@@ -68,19 +69,41 @@ export default function PatientJoin() {
                         onChange={changeValue}
                     />
                 </FormControl>
-                <HealthCardInput inputs={inputs} setInputs={setInputs} />
-                <FormControl>
-                    <FormLabel>Date of Birth (on Health Card)</FormLabel>
-                    <Input
-                        name="dob"
-                        type="date"
-                        value={inputs.dob}
-                        onChange={changeValue}
-                    />
-                </FormControl>
-            </Container>
+                <Box className="sub-form">
+                    <HealthCardInput inputs={inputs} setInputs={setInputs} />
+                    <FormControl>
+                        <FormLabel>Date of Birth (on Health Card)</FormLabel>
+                        <Input
+                            name="dob"
+                            type="date"
+                            value={inputs.dob}
+                            onChange={changeValue}
+                        />
+                    </FormControl>
+                </Box>{' '}
+                <Input
+                    type="submit"
+                    value="Submit"
+                    onClick={() => submitPatientData(inputs)}
+                />
+            </Box>
         </Box>
     );
+}
+
+function submitPatientData({ patientData }) {
+    // TODO Connect to backend
+    fetch('PATIENT ENDPOINT', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(patientData),
+    })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+        });
 }
 
 const HealthCardInput = ({ inputs, setInputs }) => {
