@@ -1,32 +1,31 @@
 import { Link } from 'react-router-dom';
-import { Navbar, Button, Text, Card, Radio } from '@nextui-org/react';
-
+import { Box, Flex, Link as ChakraLink, Button, Text } from '@chakra-ui/react';
 import './Navigation.scss';
 
 export default function Navigation() {
     const paths = {
         Home: { path: '/' },
         About: { path: '/about' },
-        Join: { path: '/join', color: 'success' },
+        Join: { path: '/join' },
     };
+
     return (
-        <Navbar>
-            <Navbar.Brand href="/">
-                <Text h2>CareConnect</Text>
-            </Navbar.Brand>
-            <Navbar.Content>
-                {Object.entries(paths).map(([name, values], index) => (
-                    <Link to={values.path} key={values.path}>
-                        <Button
-                            key={values.path}
-                            color={values.color ? values.color : 'primary'}
-                        >
-                            {name}
-                        </Button>
-                    </Link>
+        <Box className="navbar">
+            <ChakraLink as={Link} to="/">
+                <Text fontSize="3xl">CareConnect</Text>
+            </ChakraLink>
+            <Box className="links">
+                {Object.entries(paths).map(([name, values]) => (
+                    <Button
+                        as={Link}
+                        to={values.path}
+                        key={values.path}
+                        variant="highlight"
+                    >
+                        {name}
+                    </Button>
                 ))}
-                <Button.Group></Button.Group>
-            </Navbar.Content>
-        </Navbar>
+            </Box>
+        </Box>
     );
 }

@@ -1,0 +1,18 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: large;
+    .links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+}
