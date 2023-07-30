@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "nodemon": "^3.0.1",
     "sqlite3": "^5.1.6"
   }
 }

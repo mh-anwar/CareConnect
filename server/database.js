@@ -11,12 +11,12 @@ function createDbConnection() {
     return db;
 }
 
-function createTable(db) {
-    db.run(`CREATE TABLE IF NOT EXISTS patients (
-        health_card INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        email TEXT NOT NULL UNIQUE,
-        password TEXT NOT NULL,
-        role TEXT NOT NULL
-    )`);
-}
+// function createTable(db) {
+//     db.run(`CREATE TABLE IF NOT EXISTS patients (
+//         health_card INTEGER PRIMARY KEY AUTOINCREMENT,
+//         name TEXT NOT NULL,
+//         email TEXT NOT NULL UNIQUE,
+//         password TEXT NOT NULL,
+//         role TEXT NOT NULL
+//     )`);
+// }
