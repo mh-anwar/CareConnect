@@ -8,24 +8,22 @@ async function createPatient(req,res) {
 
     // Create a Patient
     const newPatient = Patient.create({
+        // instantiates a model and populates w/ request
         ...patient,
         appointments: [],
         prescriptions: [],
         history: [],
         referralCode: null
-    });
-
-    // Save Patient in the database
-    Patients.create(patient)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-            message:
-                err.message || "Some error occurred while creating the Patient."
-            });
+    })
+    newPatient.save().then(data => {
+        res.send(data);
+    })
+    .catch(err => {
+        res.status(500).send({
+        message:
+            err.message || "Some error occurred while creating the Patient."
         });
+    });
 }
 
 async function getPatient() {}

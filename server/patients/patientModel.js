@@ -3,6 +3,8 @@ const sequelize = new Sequelize('sqlite::memory:');
 
 export default class Patient extends Sequelize.Model {}
 
+// model / schema for patient
+
 Patient.init('Patient', {
     // Model attributes are defined here
     healthCard: {
