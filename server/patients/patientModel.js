@@ -3,7 +3,7 @@ const sequelize = new Sequelize('sqlite::memory:');
 
 // this method follows sequelize documentation and is the same as model extending (Mo's method)
 
-const Patients = sequelize.define('Patients', {
+const Patient = sequelize.define('Patient', {
     // Model attributes are defined here
     healthCard: {
         type: DataTypes.STRING,

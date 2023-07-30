@@ -1,4 +1,4 @@
-import Patients from './patientsModel.js';
+import Patient from './patientModel.js';
 
 // Create and Save a new Patient
 
