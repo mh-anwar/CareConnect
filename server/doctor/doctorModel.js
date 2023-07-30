@@ -1,9 +1,13 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 
-class Doctor extends Model {}
+export default class Doctor extends Model {
+  instanceLevelMethod() {
+      return 'bar';
+  }
+}
 
-User.init({
+Doctor.init({
   // Model attributes are defined here
   firstName: {
     type: DataTypes.STRING,
@@ -12,12 +16,18 @@ User.init({
   lastName: {
     type: DataTypes.STRING
     // allowNull defaults to true
-  }
+  },
+  officeLocation: {
+    type: DataTypes.STRING
+  },
+  acceptsVirtualAppointments: {
+    type: DataTypes.BOOLEAN
+  },
+  timeslots: {
+    type: DataTypes.ARRAY(DataTypes.STRING)
+  },
 }, {
   // Other model options go here
   sequelize, // We need to pass the connection instance
-  modelName: 'User' // We need to choose the model name
+  modelName: 'Doctor' // We need to choose the model name
 });
-
-// the defined model is the class itself
-console.log(User === sequelize.models.User); // true
