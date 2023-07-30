@@ -6,7 +6,7 @@ const sequelize = new Sequelize('sqlite::memory:');
 const Patient = sequelize.define('Patient', {
     // Model attributes are defined here
     healthCard: {
-        type: DataTypes.STRING,
+        type: DataTypes.OBJECT,
         allowNull: false
     },
     firstName: {
@@ -14,29 +14,37 @@ const Patient = sequelize.define('Patient', {
         allowNull: false
     },
     lastName: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
         // note: allowNull defaults to true
     },
-    dateOfBirth: {
-        type: DataTypes.DATEONLY
+    dob: {
+        type: DataTypes.DATEONLY,
+        allowNull: false
     },
     phoneNumber: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
     },
     email: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
     },
     appointments: {
-        type: DataTySpes.ARRAY(DataTypes.STRING)
+        type: DataTySpes.ARRAY(DataTypes.STRING),
+        allowNull: false
     },
     prescriptions: {
-        type: DataTypes.ARRAY(DataTypes.STRING)
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: false
     },
     history: {
-        type: DataTypes.ARRAY(DataTypes.STRING)
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: false
     },
     referralCode: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: true
     }
 });
 

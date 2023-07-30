@@ -26,6 +26,9 @@ Doctor.init({
   timeslots: {
     type: DataTypes.ARRAY(DataTypes.STRING)
   },
+  referralID: {
+    type: DataTypes.STRING
+  },
 }, {
   // Other model options go here
   sequelize, // We need to pass the connection instance
