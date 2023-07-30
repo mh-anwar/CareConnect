@@ -1,16 +1,28 @@
-import { useState } from 'react'
-import Navbar from './components/Navbar/Navbar'
-import './App.css'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Corporate from './Routes/Corporate/Corporate';
+import Clinic from './Routes/Clinic/Clinic';
+import Patient from './Routes/Patient/Patient';
+import Join from './Routes/Join/Join';
 
-function App() {
-  const [count, setCount] = useState(0)
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <Corporate />,
+    },
+    {
+        path: 'clinic',
+        element: <Clinic />,
+    },
+    {
+        path: 'patient',
+        element: <Patient />,
+    },
+    {
+        path: 'join',
+        element: <Join />,
+    },
+]);
 
-  return (
-    <>
-      <Navbar />
-
-    </>
-  )
+export default function App() {
+    return <RouterProvider router={router} />;
 }
-
-export default App
