@@ -2,10 +2,10 @@ import Patient from './patientModel.js';
 
 // Create and Save a new Patient
 
-async function createPatient(req,res) {
+async function createPatient(req, res) {
     let patient = req.body;
     // patient cont. fname, lname, healthcard, dob, phone, email
-
+    console.log(patient);
     // Create a Patient
     const newPatient = Patient.create({
         // instantiates a model and populates w/ request
@@ -13,17 +13,20 @@ async function createPatient(req,res) {
         appointments: [],
         prescriptions: [],
         history: [],
-        referralCode: null
-    })
-    newPatient.save().then(data => {
-        res.send(data);
-    })
-    .catch(err => {
-        res.status(500).send({
-        message:
-            err.message || "Some error occurred while creating the Patient."
-        });
+        referralCode: null,
     });
+    newPatient
+        .save()
+        .then((data) => {
+            res.send(data);
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message:
+                    err.message ||
+                    'Some error occurred while creating the Patient.',
+            });
+        });
 }
 
 async function getPatient() {}

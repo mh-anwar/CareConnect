@@ -93,9 +93,10 @@ export default function PatientJoin() {
     );
 }
 
-function submitPatientData({ patientData }) {
+function submitPatientData(patientData) {
+    console.log(patientData);
     // TODO Connect to backend
-    fetch('PATIENT ENDPOINT', {
+    fetch('http://localhost:3000/patient/create', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
