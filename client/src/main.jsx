@@ -1,10 +1,10 @@
-import { ChakraProvider, extendBaseTheme } from '@chakra-ui/react';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import './main.scss';
 
-const theme = extendBaseTheme({
+const theme = extendTheme({
     useSystemColorMode: true,
 });
 
