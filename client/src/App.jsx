@@ -2,7 +2,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Corporate from './Routes/Corporate/Corporate';
 import Clinic from './Routes/Clinic/Clinic';
 import Patient from './Routes/Patient/Patient';
-import Join from './Routes/Join/Join';
+import JoinRouter from './Routes/Join/JoinRouter';
+import PatientJoin from './Routes/Join/PatientJoin';
 
 const router = createBrowserRouter([
     {
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
     },
     {
         path: 'join',
-        element: <Join />,
+        element: <JoinRouter />,
+    },
+    {
+        path: 'join/patient',
+        element: <PatientJoin />,
     },
 ]);
 
