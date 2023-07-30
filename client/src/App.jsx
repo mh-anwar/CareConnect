@@ -5,6 +5,7 @@ import Patient from './Routes/Patient/Patient';
 import JoinRouter from './Routes/Join/JoinRouter';
 import PatientJoin from './Routes/Join/PatientJoin';
 import HealthCareProviderJoin from './Routes/Join/HealthCareProvider';
+import CreateAppointment from './Routes/Patient/CreateAppointment/CreateAppointment';
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
     {
         path: 'join/hcp',
         element: <HealthCareProviderJoin />,
+    },
+    {
+        path: 'patient/create-appointment',
+        element: <CreateAppointment />,
     },
 ]);
 

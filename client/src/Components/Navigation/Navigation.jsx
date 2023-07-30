@@ -18,7 +18,7 @@ export default function Navigation({ paths }) {
                             as={Link}
                             to={values.path}
                             key={values.path}
-                            colorScheme="blue"
+                            colorScheme={values.active ? 'blue' : 'gray'}
                             variant="outline"
                         >
                             {name}

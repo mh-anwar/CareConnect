@@ -7,7 +7,7 @@ import PatientSettings from '../../Components/Patient/Settings/Settings';
 
 export default function Patient() {
     const paths = {
-        Home: { path: '/patient' },
+        Home: { path: '/patient', active: true },
         'Create Appointment': { path: '/patient/create-appointment' },
     };
     return (
