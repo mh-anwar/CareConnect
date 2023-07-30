@@ -1,11 +1,7 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 
-export default class Clinic extends Model {
-  instanceLevelMethod() {
-      return 'bar';
-  }
-}
+export default class Clinic extends Model {}
 
 Clinic.init({
   // Model attributes are defined here

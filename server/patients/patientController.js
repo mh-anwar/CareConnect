@@ -16,6 +16,16 @@ async function createPatient(req,res) {
     });
 
     // Save Patient in the database
+    Patients.create(patient)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+            message:
+                err.message || "Some error occurred while creating the Patient."
+            });
+        });
 }
 
 async function getPatient() {}

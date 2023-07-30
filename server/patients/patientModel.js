@@ -1,9 +1,9 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 
-// this method follows sequelize documentation and is the same as model extending (Mo's method)
+export default class Patient extends Sequelize.Model {}
 
-const Patient = sequelize.define('Patient', {
+Patient.init('Patient', {
     // Model attributes are defined here
     healthCard: {
         type: DataTypes.OBJECT,
@@ -17,6 +17,10 @@ const Patient = sequelize.define('Patient', {
         type: DataTypes.STRING,
         allowNull: false
         // note: allowNull defaults to true
+    },
+    sex:{
+        type: DataTypes.STRING,
+        allowNull: false
     },
     dob: {
         type: DataTypes.DATEONLY,
@@ -47,8 +51,3 @@ const Patient = sequelize.define('Patient', {
         allowNull: true
     }
 });
-
-// we can access our model with sequelize.models.User.
-// `sequelize.define` also returns the model
-console.log(User === sequelize.models.User); // true
-
