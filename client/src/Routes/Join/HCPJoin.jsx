@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import './Join.scss';
 
-export default function HealthCareProviderJoin() {
+export default function HCPJoin() {
     const { isLoading, isAuthenticated, user } = useAuth0();
 
     const [inputs, setInputs] = useState({

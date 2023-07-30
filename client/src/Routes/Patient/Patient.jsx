@@ -2,8 +2,8 @@ import Navigation from '../../Components/Navigation/Navigation';
 import { Box } from '@chakra-ui/react';
 import './Patient.scss';
 import Footer from '../../Components/Footer/Footer';
-import Appointments from '../../Components/Patient/Appointments/Appointments';
-import PatientSettings from '../../Components/Patient/Settings/Settings';
+import Appointments from '../../Components/Patients/Appointments/Appointments';
+import PatientSettings from '../../Components/Patients/Settings/Settings';
 
 export default function Patient() {
     const paths = {
