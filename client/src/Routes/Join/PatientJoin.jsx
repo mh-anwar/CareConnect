@@ -26,6 +26,8 @@ export default function PatientJoin() {
             letter: '',
         },
         dob: '',
+        phoneNumber: '',
+        sex: '',
     });
     // TODO add inputs: phone number, sex
     const changeValue = (event) => {
