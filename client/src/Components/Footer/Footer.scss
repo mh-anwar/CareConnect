@@ -1,0 +1,16 @@
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: auto; // Align to bottom
+    margin: 1em;
+    padding: 1em;
+    border-top: 1px solid #eaeaea;
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+}
