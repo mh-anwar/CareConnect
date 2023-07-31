@@ -14,6 +14,7 @@ export default function HCPJoin() {
         province: '',
         postalCode: '',
         phoneNumber: '',
+        doctor: '',
         website: '',
         uuid: user.user_id,
     });
@@ -97,12 +98,12 @@ export default function HCPJoin() {
                     </Box>
                     <Box className="sub-form">
                         <FormControl>
-                            <FormLabel>Website</FormLabel>
+                            <FormLabel>Doctor</FormLabel>
                             <Input
-                                name="website"
-                                type="url"
-                                value={inputs.website}
-                                placeholder="https://medicalcenter.com"
+                                name="doctor"
+                                type="text"
+                                value={inputs.doctor}
+                                placeholder="Dr. Stephen Strange"
                                 onChange={changeValue}
                             />
                         </FormControl>

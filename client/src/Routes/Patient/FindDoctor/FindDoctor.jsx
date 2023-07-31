@@ -36,6 +36,7 @@ export default function FindDoctor() {
                     <SearchIcon color="gray.500" />
                     </InputRightElement>
                 </InputGroup>
+                <Image src='https://images.pexels.com/photos/7579831/pexels-photo-7579831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' borderRadius="1em" m="10" />
             </Box>
             <Footer/>
         </Box>
