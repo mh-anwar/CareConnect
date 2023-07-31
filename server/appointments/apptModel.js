@@ -1,5 +1,4 @@
 import { Sequelize, DataTypes, Model } from 'sequelize';
-// const sequelize = new Sequelize('sqlite::memory:');
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
@@ -7,16 +6,15 @@ const sequelize = new Sequelize({
     storage: 'data.db',
 });
 
-export default class Appt extends Model {}
+export default class ApptModel extends Model {}
 
-// model / schema for Appt
-
-Appt.init(
+ApptModel.init(
     {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
+            autoIncrement: true,
         },
         userId: {
             type: DataTypes.INTEGER,
@@ -33,6 +31,11 @@ Appt.init(
         medium: {
             type: DataTypes.STRING,
             allowNull: false,
+            validate: {
+                isIn: {
+                    args: ['Virtual', 'In-Person', 'Telephone'],
+                },
+            },
         },
         duration: {
             type: DataTypes.INTEGER,
@@ -52,7 +55,7 @@ Appt.init(
     }
 );
 
-Appt.sync()
+ApptModel.sync()
     .then(() => {
         console.log('Appt table created successfully.');
     })
