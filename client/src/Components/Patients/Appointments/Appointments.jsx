@@ -4,7 +4,6 @@ import {
     AccordionButton,
     AccordionPanel,
     AccordionIcon,
-    Box,
     Heading,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
@@ -12,47 +11,27 @@ import ApptCard from './ApptCard';
 import './Appointments.scss';
 
 export default function Appointments() {
-    const [appointments, setAppointments] = useState([]);
+    const [upcomingAppts, setUpcomingAppts] = useState([]);
+    const [pastAppts, setPastAppts] = useState([]);
 
     useEffect(() => {
-        // TODO fetch appointments from server
-        setAppointments([
-            {
-                date: '2021-04-20',
-                time: '10:00',
-                doctor: 'Dr. John Doe',
-                reason: 'Checkup',
-                type: 'Virtual',
-                duration: 30,
-                notifcation: {
-                    email: true,
-                    text: true,
-                    phone: true,
-                },
+        const userId = localStorage.getItem('userId'); // TODO switch to Auth0 or smth
+
+        fetch(import.meta.env.VITE_BACKEND + '/appt/getByUser?id=' + userId, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            {
-                date: '2021-02-19',
-                time: '3:00',
-                doctor: 'Ms. Reese Chong',
-                reason: 'Checkup',
-                type: 'In Person',
-                duration: 5,
-                notifcation: {
-                    email: true,
-                    text: true,
-                    phone: true,
-                },
-            },
-        ]);
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setUpcomingAppts(data.futureAppts);
+                setPastAppts(data.pastAppts);
+            });
     }, []);
 
     return (
-        <Accordion
-            defaultIndex={[0]}
-            allowMultiple
-            allowToggle
-            className="appointments"
-        >
+        <Accordion defaultIndex={[0]} allowMultiple className="appointments">
             <AccordionItem>
                 <AccordionButton className="accordian-btn">
                     <Heading size="md">Upcoming Appointments {''}</Heading>
@@ -60,10 +39,17 @@ export default function Appointments() {
                     <AccordionIcon />
                 </AccordionButton>
 
-                <AccordionPanel pb={4}>
-                    {appointments.map((appointment, index) => (
-                        <ApptCard key={index} appointment={appointment} />
-                    ))}
+                <AccordionPanel>
+                    {Object.entries(upcomingAppts).map(
+                        (appointmentInfo, index) => {
+                            return (
+                                <ApptCard
+                                    key={index}
+                                    appointment={appointmentInfo[1]}
+                                />
+                            );
+                        }
+                    )}
                 </AccordionPanel>
             </AccordionItem>
 
@@ -73,7 +59,16 @@ export default function Appointments() {
                     <AccordionIcon />
                 </AccordionButton>
 
-                <AccordionPanel pb={4}>Lorem</AccordionPanel>
+                <AccordionPanel>
+                    {Object.entries(pastAppts).map((appointmentInfo, index) => {
+                        return (
+                            <ApptCard
+                                key={index}
+                                appointment={appointmentInfo[1]}
+                            />
+                        );
+                    })}
+                </AccordionPanel>
             </AccordionItem>
         </Accordion>
     );

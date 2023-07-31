@@ -25,13 +25,13 @@ export default function ApptCard({ appointment }) {
         'Friday',
         'Saturday',
     ];
-    let date = new Date(appointment.date);
+    let dateTime = new Date(appointment.time);
 
     return (
         <Card>
             <CardHeader>
                 <Heading size="md">
-                    {appointment.type} Appointment with {appointment.doctor}
+                    {appointment.purpose} Appointment with {appointment.doctor}
                 </Heading>
             </CardHeader>
 
@@ -39,12 +39,12 @@ export default function ApptCard({ appointment }) {
                 <StatGroup>
                     <Stat>
                         <StatLabel>Date</StatLabel>
-                        <StatNumber>{dayNames[date.getDay()]}</StatNumber>
-                        <StatHelpText>{appointment.date}</StatHelpText>
+                        <StatNumber>{dayNames[dateTime.getDay()]}</StatNumber>
+                        <StatHelpText>{appointment.time}</StatHelpText>
                     </Stat>{' '}
                     <Stat>
                         <StatLabel>Time</StatLabel>
-                        <StatNumber>{appointment.time}</StatNumber>
+                        <StatNumber>{determineTime(dateTime)}</StatNumber>
                         <StatHelpText>
                             For {appointment.duration} minutes
                         </StatHelpText>
@@ -61,18 +61,40 @@ export default function ApptCard({ appointment }) {
     );
 }
 
+function determineTime(dateTime) {
+    // Get the hours and minutes from the Date object
+    const hours = dateTime.getHours();
+    const minutes = dateTime.getMinutes();
+
+    // Add leading zeros to base 10 numbers
+    const addLeadingZero = (number) => {
+        return number < 10 ? '0' + number : number;
+    };
+
+    // Determine if it's AM or PM
+    const amOrPm = hours >= 12 ? ' PM' : ' AM';
+
+    // Convert the hours and min to 12-hour format
+    const formattedHours = addLeadingZero(hours % 12 || 12);
+    const formattedMinutes = addLeadingZero(minutes);
+
+    // Concatenate all parts to get the final time string
+    return `${formattedHours}:${formattedMinutes}${amOrPm}`;
+}
+
 ApptCard.propTypes = {
     appointment: PropTypes.shape({
-        date: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        userId: PropTypes.number.isRequired,
         time: PropTypes.string.isRequired,
         doctor: PropTypes.string.isRequired,
-        reason: PropTypes.string.isRequired,
-        type: PropTypes.string.isRequired,
+        medium: PropTypes.string.isRequired,
         duration: PropTypes.number.isRequired,
-        notifcation: PropTypes.shape({
+        purpose: PropTypes.string.isRequired,
+        notes: PropTypes.string.isRequired,
+        notifcations: PropTypes.shape({
             email: PropTypes.bool.isRequired,
             text: PropTypes.bool.isRequired,
-            phone: PropTypes.bool.isRequired,
         }),
     }).isRequired,
 };
