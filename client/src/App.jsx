@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Corporate from './Routes/Corporate/Corporate';
 import Clinic from './Routes/HCP/HCP';
 import FindDoctor from './Routes/Patient/FindDoctor/FindDoctor';
+import NotFound from './Routes/NotFound/NotFound';
 import Patient from './Routes/Patient/Patient';
 import JoinRouter from './Routes/Join/JoinRouter';
 import PatientJoin from './Routes/Join/PatientJoin';
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
         path: 'join/hcp',
         element: <HCPJoin />,
     },
+    {
+        path: '*',
+        element: <NotFound />,
+    }
 ]);
 
 export default function App() {
