@@ -7,7 +7,14 @@ import './Navigation.scss';
 export default function Navigation({ paths }) {
     return (
         <Box className="corp-navbar">
-            <Text fontSize="3xl">CareConnect</Text>
+            <Text
+                bgGradient='linear(to-l, #1E90FF, #1c44bc)'
+                bgClip='text'
+                fontSize='4xl'
+                fontWeight='bold'
+            >
+            CareConnect
+            </Text>
 
             <Box className="links">
                 {Object.entries(paths).map(([name, values]) =>
