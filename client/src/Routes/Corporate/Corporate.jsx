@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 export default function Corporate() {
     const [userLoggedIn, setUserLoggedIn] = useState(false);
     const paths = {
-        Home: { path: '/' },
+        Home: { path: '/', active: true },
         About: { path: '/about' },
         Join: { path: '/join' },
     };

@@ -26,6 +26,8 @@ export default function PatientJoin() {
             letter: '',
         },
         dob: '',
+        phoneNumber: '',
+        sex: '',
     });
     // TODO add inputs: phone number, sex
     const changeValue = (event) => {
@@ -91,9 +93,10 @@ export default function PatientJoin() {
     );
 }
 
-function submitPatientData({ patientData }) {
+function submitPatientData(patientData) {
+    console.log(patientData);
     // TODO Connect to backend
-    fetch('PATIENT ENDPOINT', {
+    fetch(import.meta.env.VITE_BACKEND + '/patient/create', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -184,3 +187,18 @@ HealthCardInput.propTypes = {
     inputs: PropTypes.object.isRequired,
     setInputs: PropTypes.func.isRequired,
 };
+
+/*
+{
+        firstName: "user",
+        lastName: "last",
+        email: "h@g.com",
+        healthCard: {
+            number: '11111',
+            letter: 'SS',
+        },
+        dob: 'ssss',
+        phoneNumber: '233333',
+        sex: 'M',
+}
+*/

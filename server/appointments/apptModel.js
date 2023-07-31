@@ -6,9 +6,9 @@ const sequelize = new Sequelize({
     storage: 'data.db',
 });
 
-export default class PatientModel extends Model {}
+export default class ApptModel extends Model {}
 
-PatientModel.init(
+ApptModel.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -16,43 +16,37 @@ PatientModel.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        healthCard: {
-            type: DataTypes.JSON,
+        userId: {
+            type: DataTypes.INTEGER,
             allowNull: false,
-            unique: true,
         },
-        firstName: {
+        time: {
+            type: DataTypes.INET,
+            allowNull: false,
+        },
+        doctor: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        lastName: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        sex: {
+        medium: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 isIn: {
-                    args: ['Male', 'Female', 'Prefer Not To Say'],
+                    args: ['Virtual', 'In-Person', 'Telephone'],
                 },
             },
         },
-        dob: {
-            type: DataTypes.DATEONLY,
+        duration: {
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
-        phoneNumber: {
+        purpose: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-        },
-        referralCode: {
-            type: DataTypes.STRING,
+        notes: {
+            type: DataTypes.TEXT,
             allowNull: true,
         },
     },
@@ -61,10 +55,10 @@ PatientModel.init(
     }
 );
 
-PatientModel.sync()
+ApptModel.sync()
     .then(() => {
-        console.log('Patient table created successfully.');
+        console.log('Appt table created successfully.');
     })
     .catch((error) => {
-        console.error('Error creating Patient table:', error);
+        console.error('Error creating Appt table:', error);
     });
