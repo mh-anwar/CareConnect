@@ -7,14 +7,23 @@ const sequelize = new Sequelize({
 });
 
 export default class PatientModel extends Model {}
+const generatePatientUUID = () => {
+    const uuid = uuidv4();
 
+    // Extract the first 15 characters from the UUID and return it
+    return uuid.substring(0, 15);
+};
 PatientModel.init(
     {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING(15),
+            defaultValue: generatePatientUUID,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true,
+            unique: true,
+            validate: {
+                len: [15, 15], // 15 chars long
+            },
         },
         healthCard: {
             type: DataTypes.JSON,

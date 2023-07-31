@@ -1,4 +1,7 @@
 # Server
+## Notes
+- Patient ID's are 15 character long UUID's
+- HCP ID's are 20 character long UUID's
 
 ## Patient
 - Create `/Patient/create` **Post**
