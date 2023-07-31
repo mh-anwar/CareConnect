@@ -9,6 +9,7 @@ import HPCRouter from './hpc/hpcRoute.js';
 const allowedOrigins = ['http://localhost:5173', undefined]; // TODO In prod, remove undefined (it lets Postman work)
 const corsOptions = {
     origin: (origin, callback) => {
+        console.log('Request from: ' + origin);
         if (allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {

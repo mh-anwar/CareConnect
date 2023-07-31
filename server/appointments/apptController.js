@@ -1,6 +1,7 @@
 import ApptModel from './apptModel.js';
 
 async function createAppt(req, res) {
+    console.log('createAppt');
     let appt = req.body;
     // appt cont. fname, lname, healthcard, dob, phone, email
     console.log(appt);
@@ -67,5 +68,29 @@ async function deleteAppt(req, res) {
         });
 }
 
-async function getApptByUser(req, res) {}
+async function getApptByUser(req, res) {
+    let userId = req.query.id;
+    console.log(userId);
+    try {
+        const user = await ApptModel.findAll({
+            where: { userId: userId },
+        });
+
+        const pastAppts = [];
+        const futureAppts = [];
+        const today = new Date();
+        for (let i = 0; i < user.length; i++) {
+            if (user[i].date < today) {
+                pastAppts.push(user[i]);
+            } else {
+                futureAppts.push(user[i]);
+            }
+        }
+
+        res.status(200).send({ pastAppts, futureAppts });
+    } catch (error) {
+        console.error('Error while fetching user:', error);
+        res.status(500).send(error);
+    }
+}
 export { createAppt, getAppt, updateAppt, deleteAppt, getApptByUser };

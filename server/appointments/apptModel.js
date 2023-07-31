@@ -21,7 +21,7 @@ ApptModel.init(
             allowNull: false,
         },
         time: {
-            type: DataTypes.INET,
+            type: DataTypes.DATE,
             allowNull: false,
         },
         doctor: {
@@ -47,6 +47,11 @@ ApptModel.init(
         },
         notes: {
             type: DataTypes.TEXT,
+            allowNull: true,
+        },
+
+        notifications: {
+            type: DataTypes.JSON,
             allowNull: true,
         },
     },
