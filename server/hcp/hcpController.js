@@ -1,16 +1,16 @@
-import HPCModel from './hpcModel.js';
+import HCPModel from './hcpModel.js';
 
-async function createHPC(req, res) {
-    let hpcData = req.body;
+async function createHCP(req, res) {
+    let hcpData = req.body;
 
     try {
         // Create a HealthCare Provider
-        const newHPC = await HPCModel.create({
+        const newHCP = await HCPModel.create({
             // instantiates a model and populates w/ request
-            ...hpcData,
+            ...hcpData,
         });
 
-        res.send({ HPCId: newHPC.id });
+        res.send({ HCPId: newHCP.id });
     } catch (error) {
         res.status(500).send({
             message:
@@ -19,10 +19,11 @@ async function createHPC(req, res) {
     }
 }
 
-async function getHPC(req, res) {
-    let HPCId = req.query.id;
+async function getHCP(req, res) {
+    let HCPId = req.query.id;
     try {
-        const user = await HPCModel.findByPk(HPCId);
+        const user = await HCPModel.findByPk(HCPId);
+        console.log(user);
         res.status(200).send(user);
     } catch (error) {
         console.error('Error while fetching user:', error);
@@ -30,12 +31,12 @@ async function getHPC(req, res) {
     }
 }
 
-async function updateHPC(req, res) {
-    let newHPCData = req.body;
-    let HPCId = req.body.id;
-
-    HPCModel.update(newHPCData, {
-        where: { id: HPCId },
+async function updateHCP(req, res) {
+    let newHCPData = req.body;
+    let HCPId = req.body.id;
+    console.log(newHCPData);
+    HCPModel.update(newHCPData, {
+        where: { id: HCPId },
     })
         .then((updatedRows) => {
             if (updatedRows[0] === 1) {
@@ -49,11 +50,11 @@ async function updateHPC(req, res) {
         });
 }
 
-async function deleteHPC(req, res) {
-    let HPCId = req.query.id;
+async function deleteHCP(req, res) {
+    let HCPId = req.query.id;
 
-    HPCModel.destroy({
-        where: { id: HPCId },
+    HCPModel.destroy({
+        where: { id: HCPId },
     })
         .then(() => {
             res.sendStatus(200);
@@ -63,4 +64,4 @@ async function deleteHPC(req, res) {
         });
 }
 
-export { createHPC, getHPC, updateHPC, deleteHPC };
+export { createHCP, getHCP, updateHCP, deleteHCP };
