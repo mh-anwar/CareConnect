@@ -1,11 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import {
-    Box,
-    Card,
-    Text,
-    Link as RouterLink,
-} from '@chakra-ui/react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Box, Card, Text, Link } from '@chakra-ui/react';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import PatientJoin from './PatientJoin';
 import './Join.scss';
 
@@ -28,8 +23,13 @@ export default function JoinRouter() {
             isAuthenticated && (
                 <Box className="join-type">
                     <Card className="join-card">
-                        <PatientJoin/>
-                        <Text fontSize='2xl'>Joining as a clinic? Click <RouterLink to="/join/hcp" color="teal">here</RouterLink></Text>
+                        <PatientJoin />
+                        <Text fontSize="2xl">
+                            Joining as a clinic? Click{' '}
+                            <Link as={RouterLink} to="/join/hcp" color="teal">
+                                here
+                            </Link>
+                        </Text>
                     </Card>
                 </Box>
             )
