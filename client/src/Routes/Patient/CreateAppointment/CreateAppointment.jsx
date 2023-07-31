@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import Navigation from '../../../Components/Navigation/Navigation';
 import Footer from '../../../Components/Footer/Footer';
+import ManageSchedule from './Schedule';
 
 export default function CreateAppointment() {
     const paths = {
@@ -13,7 +14,8 @@ export default function CreateAppointment() {
     return (
         <Box>
             <Navigation paths={paths} />
-            <Footer/>
+            <ManageSchedule />
+            <Footer />
         </Box>
     );
 }
