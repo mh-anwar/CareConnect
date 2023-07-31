@@ -7,15 +7,17 @@ import {
     InputGroup,
     InputRightAddon,
     Text,
-    Link
+    Link,
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './Join.scss';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function PatientJoin() {
     const { isLoading, isAuthenticated, error, user } = useAuth0();
+    const navigate = useNavigate();
 
     // TODO Send this data to server on submit
     const [inputs, setInputs] = useState({
@@ -36,6 +38,31 @@ export default function PatientJoin() {
         console.log(name, value);
         setInputs((prevValue) => ({ ...prevValue, [name]: value }));
     };
+    // get user data from auth0 and ask Database if user exists
+    useEffect(() => {
+        if (isAuthenticated) {
+            console.log(user.email);
+            fetch(
+                import.meta.env.VITE_BACKEND +
+                    '/patient/getByEmail?email=' +
+                    user.email,
+                {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            )
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.patientId) {
+                        localStorage.setItem('userId', data.patientId);
+                        navigate('/patient');
+                    }
+                });
+        }
+    }, [isAuthenticated, navigate, user]);
+
     return (
         <Box className="join-page">
             <Text fontSize="3xl">Complete your signup</Text>
@@ -63,17 +90,16 @@ export default function PatientJoin() {
                     </FormControl>
 
                     <FormControl>
-                    <FormLabel>Email address</FormLabel>
-                    <Input
-                        name="email"
-                        type="email"
-                        value={inputs.email}
-                        placeholder="johndoe@gmail.com"
-                        onChange={changeValue}
-                    />
+                        <FormLabel>Email address</FormLabel>
+                        <Input
+                            name="email"
+                            type="email"
+                            value={inputs.email}
+                            placeholder="johndoe@gmail.com"
+                            onChange={changeValue}
+                        />
                     </FormControl>
                 </Box>
-                
                 <Box className="sub-form">
                     <HealthCardInput inputs={inputs} setInputs={setInputs} />
                     <FormControl>
@@ -89,16 +115,14 @@ export default function PatientJoin() {
                 <Input
                     type="submit"
                     value="Submit"
-                    onClick={() => submitPatientData(inputs)}
+                    onClick={() => submitPatientData(inputs, navigate)}
                 />
             </Box>
         </Box>
     );
 }
 
-function submitPatientData(patientData) {
-    console.log(patientData);
-    // TODO Connect to backend
+function submitPatientData(patientData, navigate) {
     fetch(import.meta.env.VITE_BACKEND + '/patient/create', {
         method: 'POST',
         headers: {
@@ -109,6 +133,12 @@ function submitPatientData(patientData) {
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
+            if (data.patientId) {
+                localStorage.setItem('userId', data.patientId);
+                navigate('/patient');
+            } else {
+                alert('Error creating patient');
+            }
         });
 }
 
