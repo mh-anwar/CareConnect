@@ -1,4 +1,4 @@
-import HPCModel from './HPCModel.js';
+import HPCModel from './hpcModel.js';
 
 async function createHPC(req, res) {
     let hpcData = req.body;

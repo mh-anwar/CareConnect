@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
+import { Sequelize, DataTypes, Model } from 'sequelize';
 const sequelize = new Sequelize({
     dialect: 'sqlite',
     logging: false,
