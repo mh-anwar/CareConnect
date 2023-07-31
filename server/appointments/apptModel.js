@@ -43,6 +43,10 @@ ApptModel.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        hcp: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         medium: {
             type: DataTypes.STRING,
             allowNull: false,
