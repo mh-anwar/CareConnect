@@ -1,14 +1,13 @@
-import { Sequelize, DataTypes, Model } from 'sequelize';
-
+const { Sequelize, DataTypes, Model } = require('sequelize');
 const sequelize = new Sequelize({
     dialect: 'sqlite',
     logging: false,
     storage: 'data.db',
 });
 
-export default class PatientModel extends Model {}
+export default class HPCModel extends Model {}
 
-PatientModel.init(
+HPCModel.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -16,25 +15,20 @@ PatientModel.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        healthCard: {
-            type: DataTypes.JSON,
-            allowNull: false,
-            unique: true,
-        },
-        firstName: {
+        healthProviderName: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        lastName: {
+        address: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        sex: {
+        city: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        dob: {
-            type: DataTypes.DATEONLY,
+        postalCode: {
+            type: DataTypes.STRING,
             allowNull: false,
         },
         phoneNumber: {
@@ -44,11 +38,12 @@ PatientModel.init(
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
         },
-        referralCode: {
+        website: {
             type: DataTypes.STRING,
-            allowNull: true,
+        },
+        doctors: {
+            type: DataTypes.JSON,
         },
     },
     {
@@ -56,7 +51,7 @@ PatientModel.init(
     }
 );
 
-PatientModel.sync()
+HPCModel.sync()
     .then(() => {
         console.log('Patient table created successfully.');
     })
