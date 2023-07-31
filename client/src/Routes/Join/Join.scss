@@ -3,8 +3,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 10% auto;
-    max-width: 50%;
+    margin: 0.5em;
+    max-width: 70%;
     padding: 1em;
 }
 
@@ -71,12 +71,11 @@
         display: flex;
         flex-direction: column;
         gap: 1em;
-        width: 40%;
-        height: 50%;
         align-self: center;
         justify-self: center;
         align-items: center;
         justify-content: center;
+        box-shadow: none;
         .buttons {
             display: flex;
             flex-direction: row;

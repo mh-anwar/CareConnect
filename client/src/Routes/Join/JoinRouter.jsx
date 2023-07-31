@@ -2,6 +2,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 import {
     Box,
     Card,
+    Text,
+    Link,
     CardHeader,
     CardBody,
     CardFooter,
@@ -10,9 +12,10 @@ import {
     Button,
     Icon,
 } from '@chakra-ui/react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { MdPerson } from 'react-icons/md';
 import { FaClinicMedical } from 'react-icons/fa';
+import PatientJoin from './PatientJoin';
 import './Join.scss';
 
 export default function JoinRouter() {
@@ -34,28 +37,8 @@ export default function JoinRouter() {
             isAuthenticated && (
                 <Box className="join-type">
                     <Card className="join-card">
-                        <CardHeader>
-                            <Heading size="xl">Join as</Heading>
-                        </CardHeader>
-                        <CardBody className="buttons">
-                            <Button
-                                as={Link}
-                                to="/join/patient"
-                                colorScheme="blue"
-                            >
-                                <Icon as={MdPerson} />
-                                Patient
-                            </Button>
-
-                            <Button
-                                as={Link}
-                                to="/join/hcp"
-                                colorScheme="purple"
-                            >
-                                <Icon as={FaClinicMedical} />
-                                Clinic
-                            </Button>
-                        </CardBody>
+                        <PatientJoin/>
+                        <Text fontSize='2xl'>Joining as a clinic? Click <Link href="/join/hcp" color="teal">here</Link></Text>
                     </Card>
                 </Box>
             )

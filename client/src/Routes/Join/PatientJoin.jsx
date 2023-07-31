@@ -7,6 +7,7 @@ import {
     InputGroup,
     InputRightAddon,
     Text,
+    Link
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -60,8 +61,8 @@ export default function PatientJoin() {
                             onChange={changeValue}
                         />
                     </FormControl>
-                </Box>
-                <FormControl>
+
+                    <FormControl>
                     <FormLabel>Email address</FormLabel>
                     <Input
                         name="email"
@@ -70,7 +71,9 @@ export default function PatientJoin() {
                         placeholder="johndoe@gmail.com"
                         onChange={changeValue}
                     />
-                </FormControl>
+                    </FormControl>
+                </Box>
+                
                 <Box className="sub-form">
                     <HealthCardInput inputs={inputs} setInputs={setInputs} />
                     <FormControl>
