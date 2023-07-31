@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Corporate from './Routes/Corporate/Corporate';
 import Clinic from './Routes/HCP/HCP';
+import FindDoctor from './Routes/Patient/FindDoctor/FindDoctor';
 import Patient from './Routes/Patient/Patient';
 import JoinRouter from './Routes/Join/JoinRouter';
 import PatientJoin from './Routes/Join/PatientJoin';
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
     {
         path: 'patient/create-appointment',
         element: <CreateAppointment />,
+    },
+    {
+        path: 'patient/find-doctor',
+        element: <FindDoctor />,
     },
     {
         path: 'join',
