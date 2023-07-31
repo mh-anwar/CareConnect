@@ -47,3 +47,10 @@ DoctorModel.init(
         sequelize,
     }
 );
+DoctorModel.sync()
+    .then(() => {
+        console.log('Patient table created successfully.');
+    })
+    .catch((error) => {
+        console.error('Error creating Patient table:', error);
+    });

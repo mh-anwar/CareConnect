@@ -9,14 +9,6 @@ export default function JoinRouter() {
     const { isLoading, isAuthenticated, error, user, loginWithRedirect } =
         useAuth0();
 
-    if (isLoading) {
-        return <Box>Loading...</Box>;
-    }
-
-    if (error) {
-        return <div>Oops... {error.message}</div>;
-    }
-
     if (isAuthenticated) {
         // First check if user exists in DB fetch
         return (
