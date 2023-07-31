@@ -1,6 +1,7 @@
 import Header from './Header/Header';
 import Navigation from '../../Components/Navigation/Navigation';
 import { useEffect, useState } from 'react';
+import Footer from '../../Components/Footer/Footer';
 
 export default function Corporate() {
     const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -15,6 +16,7 @@ export default function Corporate() {
         <div>
             <Navigation paths={paths} />
             <Header />
+            <Footer/>
         </div>
     );
 }
