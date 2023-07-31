@@ -7,50 +7,43 @@ const sequelize = new Sequelize({
     storage: 'data.db',
 });
 
-export default class Patient extends Model {}
+export default class Appt extends Model {}
 
-// model / schema for patient
+// model / schema for Appt
 
-Patient.init(
+Appt.init(
     {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true,
         },
-        healthCard: {
-            type: DataTypes.JSON,
+        userId: {
+            type: DataTypes.INTEGER,
             allowNull: false,
-            unique: true,
         },
-        firstName: {
+        time: {
+            type: DataTypes.INET,
+            allowNull: false,
+        },
+        doctor: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        lastName: {
+        medium: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        sex: {
+        duration: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        purpose: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        dob: {
-            type: DataTypes.DATEONLY,
-            allowNull: false,
-        },
-        phoneNumber: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-        },
-        referralCode: {
-            type: DataTypes.STRING,
+        notes: {
+            type: DataTypes.TEXT,
             allowNull: true,
         },
     },
@@ -58,10 +51,11 @@ Patient.init(
         sequelize,
     }
 );
-Patient.sync()
+
+Appt.sync()
     .then(() => {
-        console.log('Patient table created successfully.');
+        console.log('Appt table created successfully.');
     })
     .catch((error) => {
-        console.error('Error creating Patient table:', error);
+        console.error('Error creating Appt table:', error);
     });

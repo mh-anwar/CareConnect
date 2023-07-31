@@ -96,7 +96,7 @@ export default function PatientJoin() {
 function submitPatientData(patientData) {
     console.log(patientData);
     // TODO Connect to backend
-    fetch('http://localhost:3000/patient/create', {
+    fetch(import.meta.env.VITE_BACKEND + '/patient/create', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -187,3 +187,18 @@ HealthCardInput.propTypes = {
     inputs: PropTypes.object.isRequired,
     setInputs: PropTypes.func.isRequired,
 };
+
+/*
+{
+        firstName: "user",
+        lastName: "last",
+        email: "h@g.com",
+        healthCard: {
+            number: '11111',
+            letter: 'SS',
+        },
+        dob: 'ssss',
+        phoneNumber: '233333',
+        sex: 'M',
+}
+*/
