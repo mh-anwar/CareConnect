@@ -1,15 +1,18 @@
+import Navigation from '../../Components/Navigation/Navigation';
 import { Box } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import Navigation from '../../Components/Navigation/Navigation';
 import Footer from '../../Components/Footer/Footer';
 import Appointments from '../../Components/Appointments/Appointments';
 import PatientSettings from '../../Components/Patients/Settings/Settings';
-import './Patient.scss';
 
-export default function Patient() {
+export default function HCP() {
+    const paths = {
+        Home: { path: '/patient', active: true },
+        'Manage Schedule': { path: '/hcp/manage-schedule' },
+    };
     const [upcomingAppts, setUpcomingAppts] = useState([]);
     const [pastAppts, setPastAppts] = useState([]);
-
+    localStorage.setItem('userId', '6');
     useEffect(() => {
         const userId = localStorage.getItem('userId'); // TODO switch to Auth0 or smth
 
@@ -26,10 +29,6 @@ export default function Patient() {
             });
     }, []);
 
-    const paths = {
-        Home: { path: '/patient', active: true },
-        'Create Appointment': { path: '/patient/create-appointment' },
-    };
     return (
         <Box className="patient-homepage">
             <Navigation paths={paths} />
@@ -37,7 +36,7 @@ export default function Patient() {
                 <Appointments
                     upcomingAppts={upcomingAppts}
                     pastAppts={pastAppts}
-                    type="Patient"
+                    type="HCP"
                 />
                 <PatientSettings />
             </Box>

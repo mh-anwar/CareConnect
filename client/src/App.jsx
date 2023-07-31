@@ -1,11 +1,13 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Corporate from './Routes/Corporate/Corporate';
-import Clinic from './Routes/Clinic/Clinic';
+import Clinic from './Routes/HCP/HCP';
 import Patient from './Routes/Patient/Patient';
 import JoinRouter from './Routes/Join/JoinRouter';
 import PatientJoin from './Routes/Join/PatientJoin';
 import CreateAppointment from './Routes/Patient/CreateAppointment/CreateAppointment';
 import HCPJoin from './Routes/Join/HCPJoin';
+import HCP from './Routes/HCP/HCP';
+import ManageSchedule from './Routes/HCP/Schedule/ManageSchedule';
 
 const router = createBrowserRouter([
     {
@@ -13,12 +15,20 @@ const router = createBrowserRouter([
         element: <Corporate />,
     },
     {
-        path: 'clinic',
-        element: <Clinic />,
+        path: 'hcp',
+        element: <HCP />,
+    },
+    {
+        path: 'hcp/manage-schedule',
+        element: <ManageSchedule />,
     },
     {
         path: 'patient',
         element: <Patient />,
+    },
+    {
+        path: 'patient/create-appointment',
+        element: <CreateAppointment />,
     },
     {
         path: 'join',
@@ -31,10 +41,6 @@ const router = createBrowserRouter([
     {
         path: 'join/hcp',
         element: <HCPJoin />,
-    },
-    {
-        path: 'patient/create-appointment',
-        element: <CreateAppointment />,
     },
 ]);
 

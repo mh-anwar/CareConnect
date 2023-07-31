@@ -13,9 +13,8 @@ import {
     ButtonGroup,
 } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
-import './Appointments.scss';
 
-export default function ApptCard({ appointment }) {
+export default function PatientApptCard({ appointment }) {
     const dayNames = [
         'Sunday',
         'Monday',
@@ -82,10 +81,11 @@ function determineTime(dateTime) {
     return `${formattedHours}:${formattedMinutes}${amOrPm}`;
 }
 
-ApptCard.propTypes = {
+PatientApptCard.propTypes = {
     appointment: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        userId: PropTypes.number.isRequired,
+        id: PropTypes.string.isRequired,
+        patientName: PropTypes.string.isRequired,
+        patientId: PropTypes.number.isRequired,
         time: PropTypes.string.isRequired,
         doctor: PropTypes.string.isRequired,
         medium: PropTypes.string.isRequired,
