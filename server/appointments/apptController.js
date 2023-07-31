@@ -67,4 +67,5 @@ async function deleteAppt(req, res) {
         });
 }
 
-export { createAppt, getAppt, updateAppt, deleteAppt };
+async function getApptByUser(req, res) {}
+export { createAppt, getAppt, updateAppt, deleteAppt, getApptByUser };
