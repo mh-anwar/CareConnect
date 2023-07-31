@@ -1,7 +1,22 @@
 .corp-header {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    margin: 2em;
+    margin: 8rem;
+
+    .headline {
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .links {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1.75rem;
+    }
 }
