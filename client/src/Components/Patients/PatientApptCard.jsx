@@ -13,6 +13,7 @@ import {
     ButtonGroup,
 } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
+import './PatientApptCard.scss';
 
 export default function PatientApptCard({ appointment }) {
     const dayNames = [
@@ -26,11 +27,13 @@ export default function PatientApptCard({ appointment }) {
     ];
     let dateTime = new Date(appointment.time);
 
+    const isMobile = window.innerWidth <= 768;
+
     return (
         <Card>
             <CardHeader>
                 <Heading size="md">
-                    {appointment.purpose} Appointment with {appointment.doctor}
+                {isMobile ? `${appointment.doctor}` : `${appointment.purpose} Appointment with ${appointment.doctor}`}
                 </Heading>
             </CardHeader>
 
@@ -39,7 +42,7 @@ export default function PatientApptCard({ appointment }) {
                     <Stat>
                         <StatLabel>Date</StatLabel>
                         <StatNumber>{dayNames[dateTime.getDay()]}</StatNumber>
-                        <StatHelpText>{appointment.time}</StatHelpText>
+                        <StatHelpText>{determineDate(dateTime)}</StatHelpText>
                     </Stat>{' '}
                     <Stat>
                         <StatLabel>Time</StatLabel>
@@ -79,6 +82,24 @@ function determineTime(dateTime) {
 
     // Concatenate all parts to get the final time string
     return `${formattedHours}:${formattedMinutes}${amOrPm}`;
+}
+
+function determineDate(dateTime) {
+    // Parse the input date string to a Date object
+    const parsedDate = new Date(dateTime);
+
+    // Get the day, month, and year from the Date object
+    const day = parsedDate.getDate();
+    const month = parsedDate.getMonth() + 1; // Months are zero-based, so we add 1 to get the correct month
+    const year = parsedDate.getFullYear();
+
+    // Add leading zeros to day and month if needed
+    const addLeadingZero = (number) => {
+        return number < 10 ? '0' + number : number;
+    };
+
+    // Concatenate all parts to get the final date string in "dd-mm-yyyy" format
+    return `${addLeadingZero(day)}-${addLeadingZero(month)}-${year}`;
 }
 
 PatientApptCard.propTypes = {
