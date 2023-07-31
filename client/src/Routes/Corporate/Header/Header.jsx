@@ -23,10 +23,21 @@ export default function Header() {
                     waiting times and frustrating phone calls.
                 </Text>
                 <div className="links">
-                    <Button colorScheme="blue" variant="solid" spacing="6">
+                    <Button
+                        colorScheme="blue"
+                        variant="solid"
+                        spacing="6"
+                        as={Link}
+                        to="/hcp/find-hcp"
+                    >
                         Connect your clinic
                     </Button>
-                    <Button variant="outline" spacing="6">
+                    <Button
+                        variant="outline"
+                        spacing="6"
+                        as={Link}
+                        to="/patient"
+                    >
                         Go to CareConnect
                     </Button>
                 </div>
