@@ -1,4 +1,5 @@
 import { Sequelize, DataTypes, Model } from 'sequelize';
+import { v4 as uuidv4 } from 'uuid';
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
@@ -40,7 +41,7 @@ PatientModel.init(
         },
         sex: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 isIn: {
                     args: ['Male', 'Female', 'Prefer Not To Say'],
@@ -53,7 +54,7 @@ PatientModel.init(
         },
         phoneNumber: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         email: {
             type: DataTypes.STRING,

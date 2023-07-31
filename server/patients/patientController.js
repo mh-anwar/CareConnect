@@ -35,6 +35,19 @@ async function getPatient(req, res) {
     }
 }
 
+async function getPatientByEmail(req, res) {
+    let patientEmail = req.query.email;
+    console.log(patientEmail);
+    try {
+        const user = await PatientModel.findByPk(patientEmail);
+        console.log(user);
+        res.send(user);
+    } catch (error) {
+        console.error('Error while fetching user:', error);
+        res.status(500).send(error);
+    }
+}
+
 async function updatePatient(req, res) {
     let newPatientData = req.body;
     let patientId = req.body.id;
@@ -68,4 +81,10 @@ async function deletePatient(req, res) {
         });
 }
 
-export { createPatient, getPatient, updatePatient, deletePatient };
+export {
+    createPatient,
+    getPatient,
+    updatePatient,
+    deletePatient,
+    getPatientByEmail,
+};
