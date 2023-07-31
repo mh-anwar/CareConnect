@@ -3,18 +3,9 @@ import {
     Box,
     Card,
     Text,
-    Link,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Container,
-    Heading,
-    Button,
-    Icon,
+    Link as RouterLink,
 } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
-import { MdPerson } from 'react-icons/md';
-import { FaClinicMedical } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
 import PatientJoin from './PatientJoin';
 import './Join.scss';
 
@@ -38,7 +29,7 @@ export default function JoinRouter() {
                 <Box className="join-type">
                     <Card className="join-card">
                         <PatientJoin/>
-                        <Text fontSize='2xl'>Joining as a clinic? Click <Link href="/join/hcp" color="teal">here</Link></Text>
+                        <Text fontSize='2xl'>Joining as a clinic? Click <RouterLink to="/join/hcp" color="teal">here</RouterLink></Text>
                     </Card>
                 </Box>
             )
