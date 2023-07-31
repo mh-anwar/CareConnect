@@ -1,0 +1,19 @@
+.manage-schedule {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em;
+    text-align: center;
+}
+.schedule-data {
+    display: flex;
+    flex-direction: column;
+    gap: 5em;
+    margin-top: 2em;
+}
+
+.schedule-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
