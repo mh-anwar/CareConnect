@@ -9,6 +9,7 @@ import {
 } from '@syncfusion/ej2-react-schedule';
 import Navigation from '../../../Components/Navigation/Navigation';
 import { useEffect, useRef, useState } from 'react';
+import FindDoctor from '../FindDoctor/FindDoctor';
 
 export default function ManageSchedule() {
     const [doctor, setDoctor] = useState('');
@@ -50,7 +51,6 @@ export default function ManageSchedule() {
                 <Heading as="h1" size="xl" textAlign="center">
                     Sign Up
                 </Heading>
-
                 <Box className="schedule-data">
                     <Box className="schedule-options">
                         <Box>

@@ -21,8 +21,8 @@ export default function PatientSettings() {
         <Card>
             <CardHeader>
                 <Heading size="md">Settings</Heading>
-                <Text fontSize="md">{user.name}</Text>
-                <Text fontSize="md">{user.email}</Text>
+                <Text fontSize="md">Mohammad Anwar</Text>
+                <Text fontSize="md">sudo.mh.anwar@gmail.com</Text>
             </CardHeader>
             <CardBody>
                 <Heading size="md">Notifications</Heading>

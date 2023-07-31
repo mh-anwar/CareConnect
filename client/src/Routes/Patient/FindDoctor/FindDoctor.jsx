@@ -1,8 +1,14 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Button, Card } from '@chakra-ui/react';
 import Navigation from '../../../Components/Navigation/Navigation';
 import Footer from '../../../Components/Footer/Footer';
-import { Image, Text, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
-import { SearchIcon } from "@chakra-ui/icons";
+import {
+    Image,
+    Text,
+    Input,
+    InputGroup,
+    InputRightElement,
+} from '@chakra-ui/react';
+import { SearchIcon } from '@chakra-ui/icons';
 import './FindDoctor.scss';
 
 export default function FindDoctor() {
@@ -14,31 +20,49 @@ export default function FindDoctor() {
 
     const paths = {
         Home: { path: '/patient' },
-        'Find Doctor': {
-            path: '/patient/find-doctor',
-            active: true,
-        },
+        'Create Appointment': { path: '/patient/create-appointment' },
+        'Find Doctor': { path: '/patient/find-doctor', active: true },
     };
 
     return (
         <Box>
             <Navigation paths={paths} />
             <Box className="finddoctor-main">
-                <Text m='3' fontSize={'2xl'} fontWeight={''}>Discover Your Perfect Doctor in Your Area</Text>
-                <Text m='3' fontsize={'xs'}>Type in your desired specialty or doctor's name in the search bar above, and we'll display a list of relevant options. Let's find a suitable healthcare professional for you.</Text>
+                <Text m="3" fontSize={'2xl'} fontWeight={''}>
+                    Discover Your Perfect Doctor in Your Area
+                </Text>
+                <Text m="3" fontsize={'xs'}>
+                    Type in your desired specialty or doctor's name in the
+                    search bar above, and we'll display a list of relevant
+                    options. Let's find a suitable healthcare professional for
+                    you.
+                </Text>
                 <InputGroup>
                     <Input
-                    type="text"
-                    placeholder="Search doctors..."
-                    // onChange={handleSearchChange}
+                        type="text"
+                        placeholder="Search doctors..."
+                        // onChange={handleSearchChange}
                     />
                     <InputRightElement>
-                    <SearchIcon color="gray.500" />
+                        <SearchIcon color="gray.500" />
                     </InputRightElement>
                 </InputGroup>
-                <Image src='https://images.pexels.com/photos/7579831/pexels-photo-7579831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' borderRadius="1em" m="10" />
+                <Card>
+                    <Text m="3" fontSize={'2xl'} fontWeight={''}>
+                        Dr. Reese Chong
+                    </Text>
+                    <Text m="3" fontsize={'xs'}>
+                        Specialty: General Practitioner
+                    </Text>
+                    <Button>Add</Button>
+                </Card>
+                <Image
+                    src="https://images.pexels.com/photos/7579831/pexels-photo-7579831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    borderRadius="1em"
+                    m="10"
+                />
             </Box>
-            <Footer/>
+            <Footer />
         </Box>
     );
 }

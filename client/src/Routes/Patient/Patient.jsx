@@ -29,6 +29,7 @@ export default function Patient() {
     const paths = {
         Home: { path: '/patient', active: true },
         'Create Appointment': { path: '/patient/create-appointment' },
+        'Find Doctor': { path: '/patient/find-doctor' },
     };
     return (
         <Box className="patient-homepage">
