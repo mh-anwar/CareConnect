@@ -121,7 +121,12 @@ export default function Header() {
 
             {/* CTA */}
             <Center mt={12}>
-                <Button colorScheme="blue" size="lg">
+                <Button
+                    colorScheme="blue"
+                    size="lg"
+                    as={Link}
+                    to="/join/patient"
+                >
                     Get Started Today
                 </Button>
             </Center>
