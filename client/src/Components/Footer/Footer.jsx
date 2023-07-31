@@ -14,11 +14,13 @@ export default function Footer() {
                 <Heading size="md">Patient Pages</Heading>
                 <Link to="/patient">Patient Homepage</Link>
                 <Link to="/patient/create-appointment">Create Appointment</Link>
+                <br/>
             </Box>
             <Box>
                 <Heading size="md">HCP Pages</Heading>
                 <Link to="/hcp">HCP Homepage</Link>
                 <Link to="/hcp/scheduke">HCP Schedule</Link>
+                <br/>
             </Box>
         </Box>
     );
