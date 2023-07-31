@@ -32,6 +32,11 @@ PatientModel.init(
         sex: {
             type: DataTypes.STRING,
             allowNull: false,
+            validate: {
+                isIn: {
+                    args: ['Male', 'Female', 'Prefer Not To Say'],
+                },
+            },
         },
         dob: {
             type: DataTypes.DATEONLY,
