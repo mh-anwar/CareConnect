@@ -5,7 +5,7 @@ import Footer from '../../Components/Footer/Footer';
 
 export default function NotFound() {
     const paths = {
-        Home: { path: '*' },
+        Home: { path: '/' },
         'Take Me Back': {
             path: '/patient/404',
             active: false,
