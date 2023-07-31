@@ -25,102 +25,104 @@ export default function HCPJoin() {
     };
 
     return (
-        <Box className="join-page">
-            <Text fontSize="3xl">
-                Complete HealthCare Provider Registration
-            </Text>
-            <Box className="form">
-                <Box className="sub-form">
-                    <FormControl>
-                        <FormLabel>Health Provider Name</FormLabel>
-                        <Input
-                            name="clinicName"
-                            type="text"
-                            value={inputs.clinicName}
-                            placeholder="John"
-                            onChange={changeValue}
-                        />
-                    </FormControl>
-                    <FormControl>
-                        <FormLabel>Email Address</FormLabel>
-                        <Input
-                            name="email"
-                            type="email"
-                            value={inputs.email}
-                            placeholder="johndoe@gmail.com"
-                            onChange={changeValue}
-                        />
-                    </FormControl>
-                    <FormControl>
-                        <FormLabel>Phone Number</FormLabel>
-                        <Input
-                            name="phoneNumber"
-                            type="number"
-                            value={inputs.email}
-                            placeholder="johndoe@gmail.com"
-                            onChange={changeValue}
-                        />
-                    </FormControl>
+        <Box className="HCP-join-container">
+            <Box className="join-page">
+                <Text fontSize="3xl">
+                    Complete HealthCare Provider Registration
+                </Text>
+                <Box className="form">
+                    <Box className="sub-form">
+                        <FormControl>
+                            <FormLabel>Health Provider Name</FormLabel>
+                            <Input
+                                name="clinicName"
+                                type="text"
+                                value={inputs.clinicName}
+                                placeholder="John"
+                                onChange={changeValue}
+                            />
+                        </FormControl>
+                        <FormControl>
+                            <FormLabel>Email Address</FormLabel>
+                            <Input
+                                name="email"
+                                type="email"
+                                value={inputs.email}
+                                placeholder="johndoe@gmail.com"
+                                onChange={changeValue}
+                            />
+                        </FormControl>
+                        <FormControl>
+                            <FormLabel>Phone Number</FormLabel>
+                            <Input
+                                name="phoneNumber"
+                                type="number"
+                                value={inputs.email}
+                                placeholder="johndoe@gmail.com"
+                                onChange={changeValue}
+                            />
+                        </FormControl>
+                    </Box>
+                    <Box className="sub-form">
+                        <FormControl>
+                            <FormLabel>Physical Address</FormLabel>
+                            <Input
+                                name="physicalAddress"
+                                type="text"
+                                value={inputs.physicalAddress}
+                                placeholder="60 Tycos Drive"
+                                onChange={changeValue}
+                            />
+                        </FormControl>
+                        <FormControl>
+                            <FormLabel>City</FormLabel>
+                            <Input
+                                name="city"
+                                type="text"
+                                value={inputs.city}
+                                placeholder="Toronto"
+                                onChange={changeValue}
+                            />
+                        </FormControl>
+                        <FormControl>
+                            <FormLabel>Postal Code</FormLabel>
+                            <Input
+                                name="postalCode"
+                                type="text"
+                                value={inputs.postalCode}
+                                placeholder="M6B 1V9"
+                                onChange={changeValue}
+                            />
+                        </FormControl>
+                    </Box>
+                    <Box className="sub-form">
+                        <FormControl>
+                            <FormLabel>Website</FormLabel>
+                            <Input
+                                name="website"
+                                type="url"
+                                value={inputs.website}
+                                placeholder="https://medicalcenter.com"
+                                onChange={changeValue}
+                            />
+                        </FormControl>
+                        <FormControl>
+                            <FormLabel>Website</FormLabel>
+                            <Input
+                                name="website"
+                                type="url"
+                                value={inputs.website}
+                                placeholder="https://medicalcenter.com"
+                                onChange={changeValue}
+                            />
+                        </FormControl>
+                    </Box>
+                    <Input
+                        type="submit"
+                        value="Submit"
+                        onClick={() => submitHCPData(inputs)}
+                    />
                 </Box>
-                <Box className="sub-form">
-                    <FormControl>
-                        <FormLabel>Physical Address</FormLabel>
-                        <Input
-                            name="physicalAddress"
-                            type="text"
-                            value={inputs.physicalAddress}
-                            placeholder="60 Tycos Drive"
-                            onChange={changeValue}
-                        />
-                    </FormControl>
-                    <FormControl>
-                        <FormLabel>City</FormLabel>
-                        <Input
-                            name="city"
-                            type="text"
-                            value={inputs.city}
-                            placeholder="Toronto"
-                            onChange={changeValue}
-                        />
-                    </FormControl>
-                    <FormControl>
-                        <FormLabel>Postal Code</FormLabel>
-                        <Input
-                            name="postalCode"
-                            type="text"
-                            value={inputs.postalCode}
-                            placeholder="M6B 1V9"
-                            onChange={changeValue}
-                        />
-                    </FormControl>
-                </Box>
-                <Box className="sub-form">
-                    <FormControl>
-                        <FormLabel>Website</FormLabel>
-                        <Input
-                            name="website"
-                            type="url"
-                            value={inputs.website}
-                            placeholder="https://medicalcenter.com"
-                            onChange={changeValue}
-                        />
-                    </FormControl>
-                    <FormControl>
-                        <FormLabel>Website</FormLabel>
-                        <Input
-                            name="website"
-                            type="url"
-                            value={inputs.website}
-                            placeholder="https://medicalcenter.com"
-                            onChange={changeValue}
-                        />
-                    </FormControl>
-                </Box>
-                <Input
-                    type="submit"
-                    value="Submit"
-                    onClick={() => submitHCPData(inputs)}
-                />
             </Box>
         </Box>
     );

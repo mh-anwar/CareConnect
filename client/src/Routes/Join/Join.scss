@@ -8,6 +8,12 @@
     padding: 1em;
 }
 
+.HCP-join-container {
+    // this might be bad but we are desperate.
+    display: flex;
+    justify-content: center;
+}
+
 /* Styling for the form sections */
 .form {
     width: 100%;
