@@ -3,7 +3,8 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin: 8rem;
+    margin: 6rem;
+    overflow: hidden !important;
 
     .headline {
         display: flex;

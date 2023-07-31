@@ -3,7 +3,7 @@ import Doctor from '../../../assets/doctor.jpg';
 import './Header.scss';
 export default function Header() {
     return (
-        <Box className="corp-header" overflow="hidden">
+        <Box className="corp-header">
             <div className='headline'>
                 <Text m="3" fontSize="5xl">Secure and seamless medical scheduling.</Text>
                 <Text m="3" fontSize={'xl'}>CareConnect makes it effortless to book appointments with your preferred healthcare providers. Say goodbye to long waiting times and frustrating phone calls.</Text>
@@ -25,7 +25,7 @@ export default function Header() {
                 <Stack direction={{ base: "column", md: "row" }} spacing={4} align="center" justify="center">
                     {/* <Image src="" alt="Feature 1" w={{ base: "100%", md: "40%" }} /> */}
                     <VStack w={{ base: "100%", md: "60%" }} spacing={4} align="start">
-                        <Text fontSize="xl" fontWeight="bold">
+                        <Text fontSize="2xl" fontWeight="bold">
                         Schedule with Ease
                         </Text>
                         <Text>
@@ -33,14 +33,14 @@ export default function Header() {
                         to long waiting times and frustrating phone calls.
                         </Text>
 
-                        <Text fontSize="xl" fontWeight="bold">
+                        <Text fontSize="2xl" fontWeight="bold">
                         Secure and Confidential
                         </Text>
                         <Text>
                         Rest easy knowing that your personal information and medical data are protected with advanced encryption.
                         </Text>
 
-                        <Text fontSize="xl" fontWeight="bold">
+                        <Text fontSize="2xl" fontWeight="bold">
                         Real-Time Availability
                         </Text>
                         <Text>
